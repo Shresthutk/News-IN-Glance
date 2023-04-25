@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Home from './components/Home';
 import About from "./components/About"
 import Contact from './components/Contact';
@@ -11,8 +11,8 @@ import {
 } from "react-router-dom";
 
 
-export default class App extends Component {
-  render() {
+export default function App () {
+ 
     return (
       <>
         <HashRouter>
@@ -25,4 +25,4 @@ export default class App extends Component {
       </>
     )
   }
-}
+

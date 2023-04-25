@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Header from './Header'
 import Navbar from './Navbar'
 
-export default class Contact extends Component {
-    render() {
+export default function Contact () {
+   
         return (
             <div className="custom-height">
                 <Navbar/>
@@ -20,4 +20,4 @@ export default class Contact extends Component {
             </div>
         )
     }
-}
+

@@ -1,36 +1,37 @@
-import React, { Component } from "react";
+import React, { useState,useEffect } from "react";
 import Newsitem from "./Newsitem";
 import Spinner from "./Spinner";
 
-export class News extends Component {
-  constructor() {
-    super();
-    this.state = {
-      articles: [],
-      loading: false,
-    };
-  }
-  async componentDidMount() {
-    let url = `https://gnews.io/api/v4/top-headlines?token=2ad2e3ce71552ef8745444020b6cb20a&lang=en&country=in`;
-    this.setState({loading:true})
-    let data = await fetch(url);
-    let parsedData = await data.json();
-    // console.log(parsedData);
-    this.setState({
-      articles: parsedData.articles,
-      totalresults: parsedData.totalResults,
-      loading:false
-    });
-  }
+function News ()  {
+
+  const [articles,setArticles]=useState(null);
+  const [loading,setLoading]=useState(true);
+  const [totalResults,setTotalResults]=useState(0);
+
+  useEffect(() => {
+    
+      fetch("https://gnews.io/api/v4/top-headlines?token=2ad2e3ce71552ef8745444020b6cb20a&lang=en&country=in")
+      .then(res=>res.json())
+      .then(data=>{
+        console.log(data)
+        if(loading){
+          setArticles(data['articles'])
+          setTotalResults(data['totalResults'])
+          setLoading(false)
+        }
+      })
 
   
+    return ()=>{
+     setLoading(false); 
+    }
+  },[])
 
-  render() {
     return (
       <>
         <div className="custom-margin">
-         {this.state.loading && <Spinner/>}
-          {this.state.articles && this.state.articles.map((element) => {
+         {loading && <Spinner/>}
+          {articles && articles.map((element) => {
             return (
               <div key={element.url}>
                 <Newsitem
@@ -49,6 +50,6 @@ export class News extends Component {
       </>
     );
   }
-}
+
 
 export default News;

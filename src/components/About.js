@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Header from './Header'
 import Navbar from './Navbar'
 
 
 
 
-export default class About extends Component {
-    render() {
+export default function About() {
+    
         return (
             <div className="custom-height ">
                 <Navbar/>
@@ -19,4 +19,4 @@ export default class About extends Component {
             </div>
         )
     }
-}
+

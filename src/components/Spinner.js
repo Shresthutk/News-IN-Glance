@@ -1,12 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 
-export default class Spinner extends Component {
-  render() {
+export default function Spinner() {
+
     return (
       <div className="container">
       <progress className="progress is-small is-primary" max="100"></progress>
       </div>
     )
   }
-}

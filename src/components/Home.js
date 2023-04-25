@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import Navbar from "./Navbar";
 import Header from "./Header";
 import News from "./News";
 
-export default class Home extends Component {
-  render() {
+export default function Home () {
+
     return (
       <div>
         <>
@@ -15,4 +15,3 @@ export default class Home extends Component {
       </div>
     );
   }
-}
